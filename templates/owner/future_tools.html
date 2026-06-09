@@ -1,0 +1,147 @@
+{% extends 'owner/base.html' %}
+
+{% block title %}
+Future Admin Tools
+{% endblock %}
+
+{% block content %}
+
+<h1 class="page-title">
+Global Control Center
+</h1>
+
+
+<form method="POST">
+
+{% csrf_token %}
+
+
+<div class="action-grid">
+
+
+<!-- MAINTENANCE -->
+<div class="action-card">
+
+<h2>Maintenance Mode</h2>
+
+<label class="switch-label">
+
+<input
+type="checkbox"
+name="maintenance_mode"
+
+{% if settings_obj.maintenance_mode %}
+checked
+{% endif %}
+>
+
+Enable Maintenance Mode
+
+</label>
+
+</div>
+
+
+
+<!-- DEPOSITS -->
+<div class="action-card">
+
+<h2>Deposits</h2>
+
+<label class="switch-label">
+
+<input
+type="checkbox"
+name="deposits_enabled"
+
+{% if settings_obj.deposits_enabled %}
+checked
+{% endif %}
+>
+
+Enable Deposits
+
+</label>
+
+</div>
+
+
+
+<!-- WITHDRAWALS -->
+<div class="action-card">
+
+<h2>Withdrawals</h2>
+
+<label class="switch-label">
+
+<input
+type="checkbox"
+name="withdrawals_enabled"
+
+{% if settings_obj.withdrawals_enabled %}
+checked
+{% endif %}
+>
+
+Enable Withdrawals
+
+</label>
+
+</div>
+
+
+
+<!-- INVESTMENTS -->
+<div class="action-card">
+
+<h2>Investments</h2>
+
+<label class="switch-label">
+
+<input
+type="checkbox"
+name="investments_enabled"
+
+{% if settings_obj.investments_enabled %}
+checked
+{% endif %}
+>
+
+Enable Investments
+
+</label>
+
+</div>
+
+</div>
+
+
+
+<!-- ANNOUNCEMENT -->
+<div class="owner-section">
+
+<div class="action-card">
+
+<h2>Global Announcement</h2>
+
+<textarea
+name="site_announcement"
+rows="5"
+placeholder="Write announcement here..."
+>
+
+{{ settings_obj.site_announcement }}
+
+</textarea>
+
+<button class="primary-btn">
+Save Settings
+</button>
+
+</div>
+
+</div>
+
+</form>
+
+{% endblock %}

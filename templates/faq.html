@@ -1,0 +1,373 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="OneMarketX premium investment platform">
+<meta name="theme-color" content="#081224">
+<link rel="icon" href="{% static 'images/logo.png' %}">
+<title>FAQ | OneMarketX</title>
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar" id="navbar">
+
+    <div class="logo-area">
+        <img src="{% static 'images/logo.png' %}" alt="logo" class="logo-img">
+        <h2>OneMarket<span>X</span></h2>
+    </div>
+
+     <!-- <div class="menu-btn" id="menuBtn">
+        ☰
+    </div> -->
+
+    <div class="close-btn" id="closeBtn">
+            ✕
+        </div>
+
+    <nav class="nav-menu" id="navMenu">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'contact' %}">Contact</a>
+        <a href="{% url 'faq' %}">FAQ</a>
+        <a href="{% url 'login' %}" class="login-btn">Login</a>
+        <a href="{% url 'register' %}" class="start-btn">Start Investing</a>
+    </nav>
+
+    <div class="menu-btn" id="menuBtn">&#9776;</div>
+
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="page-hero">
+
+    <div class="page-hero-content">
+        <p class="small-tag">Help Center</p>
+        <h1>Frequently Asked Questions</h1>
+        <p>
+            Find answers to common questions about accounts, deposits, withdrawals, investments, security and platform usage.
+        </p>
+    </div>
+
+</section>
+
+<!-- ================= FAQ GENERAL ================= -->
+<section class="about-section">
+
+<div class="section-title">
+    <h2>General Questions</h2>
+</div>
+
+<div class="faq-box">
+
+<div class="faq-item">
+<button class="faq-question">What is OneMarketX?</button>
+<div class="faq-answer">OneMarketX is a modern online investment platform designed to provide structured financial opportunities through a secure and user-friendly digital experience.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question">Who can use OneMarketX?</button>
+<div class="faq-answer">Users who meet the legal age requirements in their country and agree to our platform terms may create an account where permitted.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question">Is registration free?</button>
+<div class="faq-answer">Yes. Creating an account is free unless otherwise stated for specific services.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question">Is OneMarketX available worldwide?</button>
+<div class="faq-answer">The platform is designed for global access, though availability may vary depending on jurisdiction or legal restrictions.</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= ACCOUNT ================= -->
+<section class="about-dark">
+
+<div class="section-title">
+    <h2>Account Questions</h2>
+</div>
+
+<div class="faq-box">
+
+<div class="faq-item">
+<button class="faq-question">How do I create an account?</button>
+<div class="faq-answer">Click the Start Investing button, complete the registration form and verify your email if required.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question">Can I change my email address later?</button>
+<div class="faq-answer">Yes. Supported account settings will allow secure email changes subject to verification.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question">I forgot my password. What should I do?</button>
+<div class="faq-answer">Use the Forgot Password option on the login page and follow the secure reset instructions.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question">Can I have multiple accounts?</button>
+<div class="faq-answer">Unauthorized duplicate accounts may violate platform rules. Use one verified account unless written approval is granted.</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= DEPOSITS ================= -->
+<section class="about-section">
+
+<div class="section-title">
+    <h2>Deposits</h2>
+</div>
+
+<div class="faq-box">
+
+<div class="faq-item">
+<button class="faq-question">How do I fund my account?</button>
+<div class="faq-answer">After login, navigate to the deposit section and follow the instructions for supported payment methods.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question">What is the minimum deposit?</button>
+<div class="faq-answer">Minimum deposits depend on the active investment plan or platform settings displayed at the time.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question">How long do deposits take?</button>
+<div class="faq-answer">Processing times vary depending on payment method, confirmations, verification checks and network activity.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question">What if I sent funds to the wrong address?</button>
+<div class="faq-answer">Immediately contact support with transaction details. Recovery may not always be possible depending on the payment network.</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= WITHDRAWALS ================= -->
+<section class="about-dark">
+
+<div class="section-title">
+    <h2>Withdrawals</h2>
+</div>
+
+<div class="faq-box">
+
+<div class="faq-item">
+<button class="faq-question">How do I request a withdrawal?</button>
+<div class="faq-answer">Log in to your dashboard, go to withdrawals, choose your method and submit a request.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question">How long do withdrawals take?</button>
+<div class="faq-answer">Times vary based on review queue, verification status, network conditions and internal checks.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question">Why is my withdrawal pending?</button>
+<div class="faq-answer">Pending withdrawals may require security review, identity checks, payment processing or network confirmation.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question">Can withdrawals be rejected?</button>
+<div class="faq-answer">Yes, if account rules are violated, details are incorrect or verification requirements remain incomplete.</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= INVESTMENTS ================= -->
+<section class="about-section">
+
+<div class="section-title">
+    <h2>Investments & Returns</h2>
+</div>
+
+<div class="faq-box">
+
+<div class="faq-item">
+<button class="faq-question">How are returns calculated?</button>
+<div class="faq-answer">Returns depend on the active plan percentage, duration and platform settings managed by administrators.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question">Are returns guaranteed?</button>
+<div class="faq-answer">Users should review plan details carefully. Participation involves risk considerations as explained in our Terms page.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question">Can percentages change?</button>
+<div class="faq-answer">Yes. Available plans and percentages may be updated according to platform conditions or administrative decisions.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question">Can I reinvest profits?</button>
+<div class="faq-answer">Where supported, reinvestment features may be available through the dashboard.</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= SECURITY ================= -->
+<section class="about-dark">
+
+<div class="section-title">
+    <h2>Security & Verification</h2>
+</div>
+
+<div class="faq-box">
+
+<div class="faq-item">
+<button class="faq-question">Is my account secure?</button>
+<div class="faq-answer">We use reasonable security measures, monitoring systems and secure account management processes.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question">Will I need identity verification?</button>
+<div class="faq-answer">Yes, KYC or identity checks may be required for security, withdrawals or fraud prevention.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question">How can I protect my account?</button>
+<div class="faq-answer">Use a strong password, keep login details private and enable extra security features when available.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question">What happens if suspicious activity is detected?</button>
+<div class="faq-answer">Accounts may be temporarily restricted while security checks are completed.</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= TECHNICAL ================= -->
+<section class="about-section">
+
+<div class="section-title">
+    <h2>Technical Support</h2>
+</div>
+
+<div class="faq-box">
+
+<div class="faq-item">
+<button class="faq-question">Does OneMarketX work on mobile phones?</button>
+<div class="faq-answer">Yes. The platform is optimized for mobile, tablet and desktop devices, including smaller screen sizes.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question">Will the website support multiple languages?</button>
+<div class="faq-answer">Yes. Multi-language support is part of the platform growth roadmap.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question">The page is not loading correctly. What should I do?</button>
+<div class="faq-answer">Refresh the page, clear cache, try another browser or contact support if the issue continues.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question">Which browsers are supported?</button>
+<div class="faq-answer">Modern versions of Chrome, Firefox, Safari and Edge are recommended.</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= LEGAL ================= -->
+<section class="about-dark">
+
+<div class="section-title">
+    <h2>Legal & Policies</h2>
+</div>
+
+<div class="faq-box">
+
+<div class="faq-item">
+<button class="faq-question">Where can I read your Terms & Conditions?</button>
+<div class="faq-answer">Visit the Terms page from the website navigation menu.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question">How is my personal data handled?</button>
+<div class="faq-answer">Please review our Privacy Policy for full details on data collection, usage and protection.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question">Can I request account deletion?</button>
+<div class="faq-answer">Yes. Contact support for account closure requests, subject to recordkeeping requirements.</div>
+</div>
+
+<div class="faq-item">
+<button class="faq-question">Can policies change?</button>
+<div class="faq-answer">Yes. Policies may be updated periodically to reflect platform improvements or legal requirements.</div>
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta-section">
+
+<div class="cta-box">
+    <h2>Still Need Help?</h2>
+    <p>If you cannot find the answer you need, our support team is ready to assist you.</p>
+    <a href="/contact/" class="btn-main">Contact Support</a>
+</div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+
+<div class="footer-grid">
+
+<div>
+<h3>OneMarketX</h3>
+<p>One Platform. Endless Opportunities.</p>
+</div>
+
+        <div>
+            <h4>Quick Links</h4>
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'contact' %}">Contact</a>
+        </div>
+
+        <div>
+            <h4>Legal</h4>
+            <a href="{% url 'terms' %}">Terms</a>
+            <a href="{% url 'privacy' %}">Privacy</a>
+        </div>
+
+<div>
+<h4>Support</h4>
+<a href="/contact/">Contact Us</a>
+<a href="#">Email Support</a>
+</div>
+
+</div>
+
+<p class="copyright">
+© 2026 OneMarketX. All Rights Reserved.
+</p>
+
+</footer>
+
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

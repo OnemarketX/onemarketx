@@ -1,0 +1,242 @@
+{% extends 'owner/base.html' %}
+
+{% block title %}
+Broadcast Center
+{% endblock %}
+
+{% block content %}
+
+<div class="owner-page">
+
+    <div class="page-header">
+
+        <h1>
+            Broadcast Center
+        </h1>
+
+        <p>
+            Send platform announcements, maintenance notices,
+            investment updates and emergency alerts.
+        </p>
+
+    </div>
+
+
+    <!-- CREATE BROADCAST -->
+
+    <div class="owner-card">
+
+        <form method="POST" class="owner-form">
+
+            {% csrf_token %}
+
+            <input
+                type="text"
+                name="title"
+                placeholder="Broadcast Title"
+                class="owner-input"
+                required
+            >
+
+            <textarea
+                name="message"
+                placeholder="Broadcast Message"
+                class="owner-textarea"
+                required
+            ></textarea>
+
+
+            <div class="owner-form-row">
+
+                <select
+                    name="priority"
+                    class="owner-select"
+                >
+                    <option value="Normal">
+                        Normal
+                    </option>
+
+                    <option value="Important">
+                        Important
+                    </option>
+
+                    <option value="Critical">
+                        Critical
+                    </option>
+
+                </select>
+
+
+                <select
+                    name="audience"
+                    class="owner-select"
+                >
+                    <option value="All">
+                        All Users
+                    </option>
+
+                    <option value="Investors">
+                        Investors
+                    </option>
+
+                    <option value="Active">
+                        Active Users
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <label class="owner-checkbox">
+
+                <input
+                    type="checkbox"
+                    name="pinned"
+                >
+
+                Pin Broadcast
+
+            </label>
+
+
+            <button
+                type="submit"
+                class="owner-btn"
+            >
+                Create Broadcast
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- BROADCASTS LIST -->
+
+    {% for item in broadcasts %}
+
+<div class="broadcast-card {{ item.priority|lower }}">
+
+    <div class="broadcast-top">
+
+        <h3>
+            {{ item.title }}
+        </h3>
+
+        <div class="broadcast-badges">
+
+            {% if item.is_pinned %}
+            <span class="pinned-badge">
+                📌 Pinned
+            </span>
+            {% endif %}
+
+            {% if item.is_active %}
+            <span class="status-badge active">
+                Active
+            </span>
+            {% else %}
+            <span class="status-badge disabled">
+                Disabled
+            </span>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+
+    <p class="broadcast-message">
+        {{ item.message }}
+    </p>
+
+
+    <div class="broadcast-footer">
+
+        <div>
+
+            <strong>Priority</strong>
+
+            <p>
+                {{ item.priority }}
+            </p>
+
+        </div>
+
+        <div>
+
+            <strong>Audience</strong>
+
+            <p>
+                {{ item.target_audience }}
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="broadcast-footer">
+
+        <div>
+
+            <strong>Created</strong>
+
+            <p>
+                {{ item.created_at|date:"M d, Y" }}
+            </p>
+
+        </div>
+
+        <div>
+
+            <strong>ID</strong>
+
+            <p>
+                #{{ item.id }}
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="broadcast-actions">
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <input
+                type="hidden"
+                name="action"
+                value="delete"
+            >
+
+            <input
+                type="hidden"
+                name="broadcast_id"
+                value="{{ item.id }}"
+            >
+
+            <button
+                type="submit"
+                class="delete-btn"
+                onclick="return confirm(
+                    'Delete this broadcast?'
+                )"
+            >
+                Delete Broadcast
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endfor %}
+</div>
+
+{% endblock %}

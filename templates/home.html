@@ -1,0 +1,367 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="OneMarketX premium investment platform">
+<meta name="theme-color" content="#081224">
+<link rel="icon" href="{% static 'images/logo.png' %}">
+<title>OneMarketX | One Platform. Endless Opportunities.</title>
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+{% if settings_obj.site_announcement %}
+
+<div class="announcement-banner">
+
+{{ settings_obj.site_announcement }}
+
+</div>
+
+{% endif %}
+<!-- PRELOADER -->
+<div id="loader">
+    <div class="spinner"></div>
+</div>
+
+<!-- BACKGROUND EFFECTS -->
+<div class="particles"></div>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar" id="navbar">
+
+    <div class="logo-area">
+        <img src="{% static 'images/logo.png' %}" alt="logo" class="logo-img">
+        <h2>OneMarket<span>X</span></h2>
+    </div>
+
+     <!-- <div class="menu-btn" id="menuBtn">
+        ☰
+    </div> -->
+
+    <div class="close-btn" id="closeBtn">
+            ✕
+        </div>
+
+    <nav class="nav-menu" id="navMenu">
+        <a href="#">Home</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="#plan">Plans</a>
+        <a href="{% url 'contact' %}">Contact</a>
+        <a href="{% url 'faq' %}">FAQ</a>
+        <a href="{% url 'login' %}" class="login-btn">Login</a>
+        <a href="{% url 'register' %}" class="start-btn">Start Investing</a>
+    </nav>
+
+    <div class="menu-btn" id="menuBtn">&#9776;</div>
+
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+
+    <div class="hero-left">
+
+        <p class="small-tag">Trusted Global Investment Platform</p>
+
+        <h1>One Platform.<br>Endless Opportunities.</h1>
+
+        <p class="hero-text">
+            Grow your capital through crypto, forex and premium investment plans with a secure global platform built for every investor.
+        </p>
+
+        <div class="hero-btns">
+            <a href="{% url 'register' %}" class="btn-main">Start Investing</a>
+            <a href="#plan" class="btn-outline">View Plans</a>
+        </div>
+
+        <div class="trust-badges">
+            <span>✔ Secured</span>
+            <span>✔ Fast Withdrawals</span>
+            <span>✔ Global Access</span>
+        </div>
+
+    </div>
+
+    <!-- <div class="hero-right">
+
+        <div class="chart-card">
+            <img src="{% static 'images/chart.png' %}" alt="chart placeholder">
+        </div>
+
+    </div> -->
+
+</section>
+
+<!-- ================= INVESTMENT PLANS ================= -->
+<section class="plans" id="plan">
+
+    <div class="section-title">
+        <h2>Investment Plans</h2>
+        <p>Choose the best plan that matches your financial goals.</p>
+    </div>
+
+    <div class="plan-grid">
+
+        <div class="plan-card">
+            <h3>Starter</h3>
+            <h1>1%</h1>
+            <p>Daily Return</p>
+            <ul>
+                <li>Min Deposit $200</li>
+                <li>Basic Support</li>
+                <li>Beginner Friendly</li>
+            </ul>
+            <a href="{% url 'register' %}">Choose Plan</a>
+        </div>
+
+        <div class="plan-card">
+            <h3>Growth Plan</h3>
+            <span class="badge">Popular</span>
+            <h1>1.20%</h1>
+            <p>Daily Return</p>
+            <ul>
+                <li>Min Deposit $500</li>
+                <li>Priority Support</li>
+                <li>Flexible Growth</li>
+            </ul>
+            <a href="{% url 'register' %}">Choose Plan</a>
+        </div>
+
+        <div class="plan-card active-plan">
+            
+            <h3>Elite Plan </h3>
+            <h1>1.50%</h1>
+            <p>Daily Return</p>
+            <ul>
+                <li>Min Deposit $1,000</li>
+                <li>VIP Support</li>
+                <li>Fast Returns</li>
+            </ul>
+            <a href="{% url 'register' %}">Choose Plan</a>
+        </div>
+
+        <div class="plan-card">
+            <h3>VIP</h3>
+            <h1>2.20%</h1>
+            <p>Daily Return</p>
+            <ul>
+                <li>Min Deposit $5,000</li>
+                <li>Dedicated Manager</li>
+                <li>Premium Access</li>
+            </ul>
+            <a href="{% url 'register' %}">Choose Plan</a>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TRUST STATS ================= -->
+<section class="stats">
+
+    <div class="stat-box">
+        <h2 class="counter" data-target="25000">17K+</h2>
+        <p>Active Investors</p>
+    </div>
+
+    <div class="stat-box">
+        <h2 class="counter" data-target="1200000">$100M+</h2>
+        <p>Total Deposits</p>
+    </div>
+
+    <!-- <div class="stat-box">
+        <h2 class="counter" data-target="890000">0</h2>
+        <p>Total Withdrawals</p>
+    </div> -->
+
+    <div class="stat-box">
+        <h2 class="counter" data-target="92">92</h2>
+        <p>Countries Served</p>
+    </div>
+
+</section>
+
+<!-- ================= WHY CHOOSE US ================= -->
+<section class="why">
+
+    <div class="section-title">
+        <h2>Why Choose OneMarketX</h2>
+        <p>Everything built for trust, growth and performance.</p>
+    </div>
+
+    <div class="why-grid">
+
+        <div class="why-card">
+            <h3>Advanced Security</h3>
+            <p>Your funds and data are protected with strong security systems.</p>
+        </div>
+
+        <div class="why-card">
+            <h3>Smart Returns</h3>
+            <p>Admin-managed plans optimized for flexible profit growth.</p>
+        </div>
+
+        <div class="why-card">
+            <h3>24/7 Access</h3>
+            <p>Manage investments from desktop, tablet or mobile anytime.</p>
+        </div>
+
+        <div class="why-card">
+            <h3>Global Platform</h3>
+            <p>Serving users from multiple countries worldwide.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="testimonials">
+
+    <div class="section-title">
+        <h2>What Investors Say</h2>
+    </div>
+
+    <div class="test-grid">
+
+        <div class="test-card">
+            <p>"Smooth platform and clean dashboard. Great experience."</p>
+            <h4>- Michael R.</h4>
+        </div>
+
+        <div class="test-card">
+            <p>"Withdrawals were processed fast. Impressive."</p>
+            <h4>- Sarah K.</h4>
+        </div>
+
+        <div class="test-card">
+            <p>"Professional design and easy to use on mobile."</p>
+            <h4>- Daniel T.</h4>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FAQ PREVIEW SECTION ================= -->
+<section class="about-dark">
+
+    <div class="section-title">
+        <h2>Frequently Asked Questions</h2>
+        <p>
+            Quick answers to common questions about OneMarketX. Visit our full FAQ page for detailed guidance.
+        </p>
+    </div>
+
+    <div class="faq-box">
+
+        <div class="faq-item">
+            <button class="faq-question">How do I create an account?</button>
+            <div class="faq-answer">
+                Click the Start Investing button, complete registration and verify your details if required.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">How do deposits work?</button>
+            <div class="faq-answer">
+                After login, go to your dashboard deposit section and follow the payment instructions provided.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">How are returns calculated?</button>
+            <div class="faq-answer">
+                Returns depend on the active investment plan percentage, duration and current platform settings.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">When can I withdraw funds?</button>
+            <div class="faq-answer">
+                Withdrawals can be requested based on available balance, plan conditions and account verification status.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Is my account secure?</button>
+            <div class="faq-answer">
+                Yes. We use security-focused systems, monitoring tools and verification processes to help protect accounts.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question">Does OneMarketX work on mobile?</button>
+            <div class="faq-answer">
+                Yes. The platform is fully responsive for mobile phones, tablets and desktop devices.
+            </div>
+        </div>
+
+    </div>
+
+    <!-- View All FAQs Button -->
+    <div style="text-align:center; margin-top:40px;">
+        <a href="/faq/" class="btn-main">View All FAQs</a>
+    </div>
+
+</section>
+<!-- <div id="google_translate_element"></div> -->
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+
+    <div class="footer-grid">
+
+        <div>
+            <h3>OneMarketX</h3>
+            <p>One Platform. Endless Opportunities.</p>
+        </div>
+
+        <div>
+            <h4>Quick Links</h4>
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'contact' %}">Contact</a>
+        </div>
+
+        <div>
+            <h4>Legal</h4>
+            <a href="{% url 'terms' %}">Terms</a>
+            <a href="{% url 'privacy' %}">Privacy</a>
+        </div>
+
+        <div>
+            <h4>Support</h4>
+            <!-- <a href="#">Help Center</a> -->
+            <a href="{% url 'contact' %}">Email Support</a>
+        </div>
+
+    </div>
+
+    <p class="copyright">
+        © 2026 OneMarketX. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<script>
+function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+        {
+            pageLanguage: 'en'
+        },
+        'google_translate_element'
+    );
+}
+</script>
+
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

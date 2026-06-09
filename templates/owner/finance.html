@@ -1,0 +1,152 @@
+{% extends 'owner/base.html' %}
+
+{% block title %}
+Finance Panel
+{% endblock %}
+
+{% block content %}
+
+<h1 class="page-title">
+Finance Panel
+</h1>
+
+
+<!-- KPI GRID -->
+<div class="kpi-grid">
+
+<div class="kpi-card">
+<h3>Total Deposits</h3>
+<p>${{ total_deposits }}</p>
+</div>
+
+<div class="kpi-card">
+<h3>Total Withdrawals</h3>
+<p>${{ total_withdrawals }}</p>
+</div>
+
+<div class="kpi-card">
+<h3>Net Platform Balance</h3>
+<p>${{ net_balance }}</p>
+</div>
+
+<div class="kpi-card">
+<h3>Total Invested</h3>
+<p>${{ total_invested }}</p>
+</div>
+
+<div class="kpi-card">
+<h3>Wallet Liability</h3>
+<p>${{ total_wallet_liability }}</p>
+</div>
+
+<div class="kpi-card">
+<h3>Active Investments</h3>
+<p>{{ active_investments }}</p>
+</div>
+
+<div class="kpi-card warning">
+<h3>Pending Deposits</h3>
+<p>{{ pending_deposits }}</p>
+</div>
+
+<div class="kpi-card danger">
+<h3>Pending Withdrawals</h3>
+<p>{{ pending_withdrawals }}</p>
+</div>
+
+<div class="kpi-card">
+<h3>Total Profit Paid</h3>
+<p>${{ total_profit_paid }}</p>
+</div>
+
+<div class="kpi-card">
+<h3>Referral Bonuses Paid</h3>
+<p>${{ total_referral_bonus }}</p>
+</div>
+
+<div class="kpi-card">
+<h3>Reserve Estimate</h3>
+<p>${{ reserve_estimate }}</p>
+</div>
+
+</div>
+
+
+
+<!-- PENDING DEPOSITS -->
+<div class="owner-section">
+
+<h2>
+Recent Pending Deposits
+</h2>
+
+<div class="table-wrap">
+
+<table class="owner-table">
+
+<tr>
+<th>User</th>
+<th>Amount</th>
+<th>Status</th>
+</tr>
+
+{% for item in recent_pending_deposits %}
+
+<tr>
+
+<td>{{ item.user }}</td>
+
+<td>${{ item.amount }}</td>
+
+<td>{{ item.status }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+
+
+<!-- PENDING WITHDRAWALS -->
+<div class="owner-section">
+
+<h2>
+Recent Pending Withdrawals
+</h2>
+
+<div class="table-wrap">
+
+<table class="owner-table">
+
+<tr>
+<th>User</th>
+<th>Amount</th>
+<th>Status</th>
+</tr>
+
+{% for item in recent_pending_withdrawals %}
+
+<tr>
+
+<td>{{ item.user }}</td>
+
+<td>${{ item.amount }}</td>
+
+<td>{{ item.status }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+{% endblock %}

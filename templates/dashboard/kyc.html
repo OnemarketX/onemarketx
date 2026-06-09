@@ -1,0 +1,118 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}
+KYC Verification
+{% endblock %}
+
+{% block content %}
+
+<div class="settings-container">
+
+    <div class="settings-card">
+
+        <h2>KYC Verification</h2>
+
+        {% if kyc and kyc.status == "Approved" %}
+
+<div class="kyc-status-card">
+
+    <h3>
+        KYC Approved
+    </h3>
+
+    <p>
+        Your account is verified.
+    </p>
+
+</div>
+
+{% elif kyc and kyc.status == "Pending" %}
+
+<div class="kyc-status-card">
+
+    <h3>
+        KYC Pending Review
+    </h3>
+
+    <p>
+        Your documents are under review.
+    </p>
+
+</div>
+
+{% else %}
+
+<form
+    method="POST"
+    enctype="multipart/form-data"
+>
+
+    {% csrf_token %}
+
+    <div class="form-group">
+        <label>ID Document</label>
+        <input
+            type="file"
+            name="id_document"
+            required
+        >
+    </div>
+
+    <div class="form-group">
+        <label>Selfie</label>
+        <input
+            type="file"
+            name="selfie"
+            required
+        >
+    </div>
+
+    <div class="form-group">
+        <label>Address Proof</label>
+        <input
+            type="file"
+            name="address_proof"
+            required
+        >
+    </div>
+
+    {% if kyc and kyc.status == "Rejected" %}
+
+    <div class="alert alert-danger">
+
+        <strong>
+            KYC Rejected
+        </strong>
+
+        <p>
+            {{ kyc.admin_note }}
+        </p>
+
+        <p>
+            Please upload new documents.
+        </p>
+
+    </div>
+
+    {% endif %}
+
+    <button
+        type="submit"
+        class="save-btn"
+    >
+        {% if kyc %}
+            Resubmit KYC
+        {% else %}
+            Submit KYC
+        {% endif %}
+    </button>
+
+</form>
+
+{% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}

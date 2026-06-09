@@ -1,0 +1,328 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="OneMarketX premium investment platform">
+<meta name="theme-color" content="#081224">
+<link rel="icon" href="{% static 'images/logo.png' %}">
+<title>Contact Us | OneMarketX</title>
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar" id="navbar">
+
+    <div class="logo-area">
+        <img src="{% static 'images/logo.png' %}" alt="logo" class="logo-img">
+        <h2>OneMarket<span>X</span></h2>
+    </div>
+
+     <!-- <div class="menu-btn" id="menuBtn">
+        ☰
+    </div> -->
+
+    <div class="close-btn" id="closeBtn">
+            ✕
+        </div>
+
+    <nav class="nav-menu" id="navMenu">
+        <a href="{% url 'home' %}">Home</a>
+        <a href="{% url 'about' %}">About</a>
+        <a href="{% url 'contact' %}">Contact</a>
+        <a href="{% url 'faq' %}">FAQ</a>
+        <a href="{% url 'login' %}" class="login-btn">Login</a>
+        <a href="{% url 'register' %}" class="start-btn">Start Investing</a>
+    </nav>
+
+    <div class="menu-btn" id="menuBtn">&#9776;</div>
+
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="page-hero">
+
+    <div class="page-hero-content">
+        <p class="small-tag">Contact OneMarketX</p>
+        <h1>We’re Here To Help</h1>
+        <p>
+            Our team is committed to providing timely, professional and helpful support. Whether you have questions about your account, platform features or general inquiries, we’re ready to assist.
+        </p>
+    </div>
+
+</section>
+
+<!-- ================= CONTACT INTRO ================= -->
+<section class="about-section">
+
+    <div class="section-title">
+        <h2>Get In Touch</h2>
+    </div>
+
+    <div class="long-text">
+
+        <p>
+            At OneMarketX, we believe responsive communication is a key part of trust. We understand that users value clarity, speed and professionalism when reaching out for assistance.
+        </p>
+
+        <p>
+            Our support channels are structured to help users receive guidance regarding accounts, technical issues, onboarding, security concerns and other important matters.
+        </p>
+
+        <p>
+            Whether you are a new visitor exploring our platform or an existing user requiring assistance, we welcome your message.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= CONTACT METHODS ================= -->
+<section class="about-dark">
+
+    <div class="section-title">
+        <h2>Support Channels</h2>
+    </div>
+
+    <div class="trust-grid">
+
+        <div class="trust-card">
+            <h3>Email Support</h3>
+            <p>support@onemarketx.com</p>
+            <p>For general assistance and account-related inquiries.</p>
+        </div>
+
+        <div class="trust-card">
+            <h3>Business Inquiries</h3>
+            <p>business@onemarketx.com</p>
+            <p>For partnerships, corporate opportunities and proposals.</p>
+        </div>
+
+        <div class="trust-card">
+            <h3>Technical Help</h3>
+            <p>tech@onemarketx.com</p>
+            <p>For technical issues, bugs or system access concerns.</p>
+        </div>
+
+        <div class="trust-card">
+            <h3>Live Chat</h3>
+            <p>Available Soon</p>
+            <p>Future real-time support integration.</p>
+        </div>
+
+        <div class="trust-card">
+            <h3>Office Address</h3>
+            <p>Head Office Placeholder</p>
+            <p>Add official company location later.</p>
+        </div>
+
+        <div class="trust-card">
+            <h3>Working Hours</h3>
+            <p>24/7 Online Platform</p>
+            <p>Support responses processed based on queue priority.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= CONTACT FORM ================= -->
+<section class="about-section">
+
+    <div class="section-title">
+        <h2>Send Us A Message</h2>
+        <p>Fill out the form below and our team will review your request.</p>
+    </div>
+
+    <div class="contact-form-wrap">
+
+        <form method="POST" action="" class="contact-form">
+            {% csrf_token %}
+
+            <div class="form-grid">
+
+                <div class="input-box">
+                    <label>Full Name</label>
+                    <input type="text" name="name" placeholder="Enter your full name">
+                </div>
+
+                <div class="input-box">
+                    <label>Email Address</label>
+                    <input type="email" name="email" placeholder="Enter your email">
+                </div>
+
+            </div>
+
+            <div class="input-box">
+                <label>Subject</label>
+                <input type="text" name="subject" placeholder="Enter subject">
+            </div>
+
+            <div class="input-box">
+                <label>Message</label>
+                <textarea name="message" rows="7" placeholder="Write your message here..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-main submit-btn">
+                Send Message
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<!-- ================= RESPONSE PROMISE ================= -->
+<section class="about-dark">
+
+    <div class="section-title">
+        <h2>Our Response Commitment</h2>
+    </div>
+
+    <div class="long-text">
+
+        <p>
+            We strive to respond to inquiries as quickly as possible while maintaining quality and professionalism in every interaction.
+        </p>
+
+        <p>
+            Some requests may require verification or internal review depending on the nature of the issue. Our team works to ensure each case receives proper attention.
+        </p>
+
+        <p>
+            We appreciate your patience and trust when contacting OneMarketX.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= FAQ QUICK HELP ================= -->
+<section class="about-section">
+
+    <div class="section-title">
+        <h2>Quick Help Topics</h2>
+    </div>
+
+    <div class="value-grid">
+
+        <div class="value-card">
+            <h3>Account Access</h3>
+            <p>Password reset, verification and login guidance.</p>
+        </div>
+
+        <div class="value-card">
+            <h3>Deposits</h3>
+            <p>Funding process and transaction review support.</p>
+        </div>
+
+        <div class="value-card">
+            <h3>Withdrawals</h3>
+            <p>Status inquiries and payout guidance.</p>
+        </div>
+
+        <div class="value-card">
+            <h3>Security</h3>
+            <p>Suspicious activity or account protection requests.</p>
+        </div>
+
+        <div class="value-card">
+            <h3>Technical Issues</h3>
+            <p>Dashboard problems or browser compatibility help.</p>
+        </div>
+
+        <div class="value-card">
+            <h3>General Questions</h3>
+            <p>Plans, features and onboarding support.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= GLOBAL ACCESS ================= -->
+<section class="about-dark">
+
+    <div class="section-title">
+        <h2>Global User Support</h2>
+    </div>
+
+    <div class="long-text">
+
+        <p>
+            OneMarketX is built for international users. As we continue expanding, our support systems are designed to accommodate a growing global audience.
+        </p>
+
+        <p>
+            Future multilingual support and enhanced communication channels remain part of our long-term service roadmap.
+        </p>
+
+        <p>
+            No matter where you are located, we value your experience on our platform.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta-section">
+
+    <div class="cta-box">
+
+        <h2>Need Assistance?</h2>
+
+        <p>
+            Reach out today and our team will be glad to help.
+        </p>
+
+        <a href="/register/" class="btn-main">Create Account</a>
+
+    </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+
+    <div class="footer-grid">
+
+        <div>
+            <h3>OneMarketX</h3>
+            <p>One Platform. Endless Opportunities.</p>
+        </div>
+
+        <div>
+            <h4>Quick Links</h4>
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'contact' %}">Contact</a>
+        </div>
+
+        <div>
+            <h4>Legal</h4>
+            <a href="{% url 'terms' %}">Terms</a>
+            <a href="{% url 'privacy' %}">Privacy</a>
+        </div>
+
+        <div>
+            <h4>Support</h4>
+            <a href="#">Help Center</a>
+            <a href="#">Email Support</a>
+        </div>
+
+    </div>
+
+    <p class="copyright">
+        © 2026 OneMarketX. All Rights Reserved.
+    </p>
+
+</footer>
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

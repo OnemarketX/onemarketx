@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register | OneMarketX</title>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<section class="page-hero">
+
+<div class="contact-form-wrap">
+
+<div class="section-title">
+<h2>Create Your Account</h2>
+<p>Start your investment journey with OneMarketX.</p>
+</div>
+
+<form method="POST" class="contact-form">
+{% csrf_token %}
+
+{% if form.non_field_errors %}
+<div class="form-errors">
+    {% for error in form.non_field_errors %}
+        <p>{{ error }}</p>
+    {% endfor %}
+</div>
+{% endif %}
+
+<!-- Fields -->
+<!-- {% for field in form %}
+<div class="input-box">
+    <label>{{ field.label }}</label>
+    {{ field }}
+
+    {% if field.errors %}
+        <div class="field-error">
+            {% for error in field.errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+{% endfor %} -->
+
+<div class="form-grid">
+
+<div class="input-box">
+<label>Username</label>
+{{ form.username }}
+{{ form.username.errors }}
+</div>
+
+<div class="input-box">
+<label>Email</label>
+{{ form.email }}
+{{ form.email.errors }}
+</div>
+
+<div class="input-box">
+<label>Country</label>
+{{ form.country }}
+{{ form.country.errors }}
+</div>
+
+<div class="input-box">
+<label>Password</label>
+{{ form.password }}
+{{ form.password.errors }}
+</div>
+
+<div class="input-box">
+<label>Confirm Password</label>
+{{ form.confirm_password }}
+{{ form.confirm_password.errors }}
+</div>
+
+<div class="input-box">
+<label>Referral Code (Optional)</label>
+{{ form.referral }}
+{{ form.referral.errors }}
+</div>
+
+</div>
+
+<button type="submit" class="btn-main submit-btn">
+Create Account
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

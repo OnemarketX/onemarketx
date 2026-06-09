@@ -1,0 +1,283 @@
+{% extends 'owner/base.html' %}
+
+{% block title %}
+User Details
+{% endblock %}
+
+{% block content %}
+
+<h1 class="page-title">
+{{ user_obj.username }}
+</h1>
+
+
+<!-- USER STATS -->
+<div class="kpi-grid">
+
+<div class="kpi-card">
+<h3>Email</h3>
+<p style="font-size:18px;">
+{{ user_obj.email }}
+</p>
+</div>
+
+<div class="kpi-card">
+<h3>Wallet Balance</h3>
+<p>${{ user_obj.wallet_balance }}</p>
+</div>
+
+<div class="kpi-card">
+<h3>Referrals</h3>
+<p>{{ referrals.count }}</p>
+</div>
+
+<div class="kpi-card">
+<h3>Referral Earnings</h3>
+<p>${{ total_referral_earnings }}</p>
+</div>
+
+</div>
+<div class="info-card">
+
+    <h4>KYC Status</h4>
+
+    {% if user_obj.kyc_verified %}
+        <span class="approved">
+            Approved
+        </span>
+    {% else %}
+        <span class="pending">
+            Not Verified
+        </span>
+    {% endif %}
+
+</div>
+
+
+<!-- ACTIONS -->
+<div class="owner-section">
+
+<div class="action-grid">
+
+<!-- SUSPEND -->
+<div class="action-card">
+
+<h2>User Control</h2>
+
+{% if user_obj.is_suspended %}
+
+<form method="POST">
+{% csrf_token %}
+
+<input
+type="hidden"
+name="action"
+value="activate"
+>
+
+<button class="success-btn">
+Activate User
+</button>
+
+</form>
+
+{% else %}
+
+<form method="POST">
+{% csrf_token %}
+
+<input
+type="hidden"
+name="action"
+value="suspend"
+>
+
+<button class="danger-btn">
+Suspend User
+</button>
+
+</form>
+
+{% endif %}
+
+</div>
+
+
+
+<!-- BALANCE -->
+<div class="action-card">
+
+<h2>Edit Balance</h2>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<input
+type="hidden"
+name="action"
+value="balance"
+>
+
+<input
+type="number"
+step="0.01"
+name="balance"
+value="{{ user_obj.wallet_balance }}"
+required
+>
+
+<button class="primary-btn">
+Update Balance
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <input
+        type="hidden"
+        name="action"
+        value="reset_pin"
+    >
+
+    <button
+        class="danger-btn"
+        type="submit"
+    >
+        Reset Withdrawal PIN
+    </button>
+
+</form>
+
+<!-- DEPOSITS -->
+<div class="owner-section">
+
+<h2>Deposits</h2>
+
+<div class="table-wrap">
+
+<table class="owner-table">
+
+<tr>
+<th>Amount</th>
+<th>Method</th>
+<th>Status</th>
+<th>Date</th>
+</tr>
+
+{% for item in deposits %}
+
+<tr>
+<td>${{ item.amount }}</td>
+<td>{{ item.method }}</td>
+<td>{{ item.status }}</td>
+<td>{{ item.created_at }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+
+
+<!-- WITHDRAWALS -->
+<div class="owner-section">
+
+<h2>Withdrawals</h2>
+
+<div class="table-wrap">
+
+<table class="owner-table">
+
+<tr>
+<th>Amount</th>
+<th>Method</th>
+<th>Status</th>
+<th>Date</th>
+</tr>
+
+{% for item in withdrawals %}
+
+<tr>
+<td>${{ item.amount }}</td>
+<td>{{ item.method }}</td>
+<td>{{ item.status }}</td>
+<td>{{ item.created_at }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+
+
+<!-- INVESTMENTS -->
+<div class="owner-section">
+
+<h2>Investments</h2>
+
+<div class="table-wrap">
+
+<table class="owner-table">
+
+<tr>
+<th>Plan</th>
+<th>Amount</th>
+<th>Days Paid</th>
+<th>Status</th>
+</tr>
+
+{% for item in investments %}
+
+<tr>
+
+<td>{{ item.plan.name }}</td>
+
+<td>${{ item.amount }}</td>
+
+<td>
+{{ item.days_paid }}/{{ item.plan.duration_days }}
+</td>
+
+<td>
+
+{% if item.completed %}
+
+Completed
+
+{% else %}
+
+Running
+
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+{% endblock %}

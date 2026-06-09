@@ -1,0 +1,92 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Referrals | OneMarketX{% endblock %}
+
+{% block content %}
+
+<div class="dash-top">
+<h1>Referral Earnings</h1>
+<p>Invite users and earn 5% of their first approved deposit.</p>
+</div>
+
+<!-- Top Cards -->
+<div class="cards-grid">
+
+<div class="dash-card">
+<h3>Total Referrals</h3>
+<p>{{ referrals.count }}</p>
+</div>
+
+<div class="dash-card">
+<h3>Active Referrals</h3>
+<p>{{ active_referrals }}</p>
+</div>
+
+<div class="dash-card">
+<h3>Total Earnings</h3>
+<p>$ {{ total_earnings }}</p>
+</div>
+
+<div class="dash-card">
+<h3>Avg Bonus</h3>
+<p>$ {{ avg_bonus|floatformat:2 }}</p>
+</div>
+
+</div>
+
+<!-- Link -->
+<div class="dash-card history-card">
+
+<h3>Your Referral Link</h3>
+
+<div class="copy-box">
+<input type="text" id="refLink" value="{{ ref_link }}" readonly>
+<button onclick="copyRef()">Copy</button>
+</div>
+
+</div>
+
+<!-- Bonus History -->
+<div class="dash-card history-card">
+
+<h3>Commission History</h3>
+
+<div class="table-wrap">
+
+<table class="dash-table">
+
+<tr>
+<th>User</th>
+<th>First Deposit</th>
+<th>Date</th>
+</tr>
+
+{% for item in bonus_deposits %}
+<tr>
+<td>{{ item.user.username }}</td>
+<td>$ {{ item.amount }}</td>
+<td>{{ item.created_at|date:"M d, Y" }}</td>
+</tr>
+{% empty %}
+<tr>
+<td colspan="4">No commissions yet.</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+<script>
+function copyRef(){
+    let x = document.getElementById("refLink");
+    x.select();
+    x.setSelectionRange(0,99999);
+    navigator.clipboard.writeText(x.value);
+    alert("Referral link copied!");
+}
+</script>
+
+{% endblock %}

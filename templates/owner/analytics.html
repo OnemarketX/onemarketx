@@ -1,0 +1,129 @@
+{% extends 'owner/base.html' %}
+
+{% block title %}
+Analytics
+{% endblock %}
+
+{% block content %}
+
+<h1 class="page-title">
+Platform Analytics
+</h1>
+
+
+<!-- KPI GRID -->
+<div class="kpi-grid">
+
+<div class="kpi-card">
+<h3>Total Users</h3>
+<p>{{ total_users }}</p>
+</div>
+
+<div class="kpi-card">
+<h3>Verified Users</h3>
+<p>{{ verified_users }}</p>
+</div>
+
+<div class="kpi-card">
+<h3>Active Users</h3>
+<p>{{ active_users }}</p>
+</div>
+
+<div class="kpi-card danger">
+<h3>Suspended Users</h3>
+<p>{{ suspended_users }}</p>
+</div>
+
+<div class="kpi-card">
+<h3>New Users Today</h3>
+<p>{{ new_users_today }}</p>
+</div>
+
+<div class="kpi-card">
+<h3>Total Deposits</h3>
+<p>${{ total_deposits }}</p>
+</div>
+
+<div class="kpi-card">
+<h3>Deposits Today</h3>
+<p>${{ deposits_today }}</p>
+</div>
+
+<div class="kpi-card warning">
+<h3>Pending Deposits</h3>
+<p>{{ pending_deposits }}</p>
+</div>
+
+<div class="kpi-card">
+<h3>Total Withdrawals</h3>
+<p>${{ total_withdrawals }}</p>
+</div>
+
+<div class="kpi-card">
+<h3>Withdrawals Today</h3>
+<p>${{ withdrawals_today }}</p>
+</div>
+
+<div class="kpi-card warning">
+<h3>Pending Withdrawals</h3>
+<p>{{ pending_withdrawals }}</p>
+</div>
+
+<div class="kpi-card">
+<h3>Total Invested</h3>
+<p>${{ total_invested }}</p>
+</div>
+
+<div class="kpi-card">
+<h3>Active Investments</h3>
+<p>{{ active_investments }}</p>
+</div>
+
+<div class="kpi-card">
+<h3>Referral Users</h3>
+<p>{{ referred_users }}</p>
+</div>
+
+</div>
+
+
+
+<!-- TOP INVESTORS -->
+<div class="owner-section">
+
+<h2>
+Top Investors
+</h2>
+
+<div class="table-wrap">
+
+<table class="owner-table">
+
+<tr>
+<th>Username</th>
+<th>Total Invested</th>
+</tr>
+
+{% for item in top_investors %}
+
+<tr>
+
+<td>
+{{ item.user__username }}
+</td>
+
+<td>
+${{ item.total }}
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+{% endblock %}

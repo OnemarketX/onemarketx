@@ -1,0 +1,29 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<section class="page-hero">
+
+<div class="contact-form-wrap">
+
+<div class="section-title">
+<h2>Verify Your Email</h2>
+<p>Enter the 6-digit code sent to your email.</p>
+</div>
+
+<form method="POST" class="contact-form">
+{% csrf_token %}
+
+<div class="input-box">
+<label>Verification Code</label>
+<input type="text" name="code" required>
+</div>
+
+<button type="submit" class="btn-main submit-btn">
+Verify Account
+</button>
+
+</form>
+
+</div>
+
+</section>

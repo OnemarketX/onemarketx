@@ -1,0 +1,31 @@
+{% extends 'owner/base.html' %}
+
+{% block content %}
+
+<div class="owner-card">
+
+    <h2>KYC Reviews</h2>
+
+    {% for item in submissions %}
+
+    <div class="user-row">
+
+        <strong>
+            {{ item.user.username }}
+        </strong>
+
+        <span>
+            {{ item.status }}
+        </span>
+
+        <a href="/owner-kyc/{{ item.id }}/">
+            Review
+        </a>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

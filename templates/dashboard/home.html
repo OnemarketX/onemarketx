@@ -1,0 +1,66 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Dashboard | OneMarketX{% endblock %}
+
+{% block content %}
+<!-- <a href="/notifications/" class="dashboard-card">
+
+<h3>
+✉
+</h3>
+
+<p>
+{{ unread_notifications }} unread
+</p>
+
+</a> -->
+<div class="dash-top">
+<h1>Welcome, {{ request.user.username }}</h1>
+<p>Your financial overview.</p>
+</div>
+<div class="kyc-badge">
+
+    {% if request.user.kyc_verified %}
+
+        <span class="kyc-approved">
+            ✔ Verified
+        </span>
+
+    {% else %}
+
+        <span class="kyc-pending">
+            KYC Required
+        </span>
+
+    {% endif %}
+
+</div>
+<div class="cards-grid">
+
+<div class="dash-card">
+<h3>Wallet Balance</h3>
+<p>$ {{ request.user.wallet_balance }}</p>
+</div>
+
+<div class="dash-card">
+<h3>Referral Code</h3>
+<p>{{ request.user.referral_code }}</p>
+</div>
+
+<div class="dash-card">
+<h3>Status</h3>
+<p>{% if request.user.is_verified %}Verified{% else %}Pending{% endif %}</p>
+</div>
+
+<div class="dash-card">
+<h3>Joined</h3>
+<p>{{ request.user.date_joined|date:"M d, Y" }}</p>
+</div>
+
+
+
+
+</div>
+
+
+{% endblock %}

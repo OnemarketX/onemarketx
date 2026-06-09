@@ -1,0 +1,77 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}
+Notifications
+{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+
+<h1>
+Notifications
+</h1>
+
+<a
+href="/read-all-notifications/"
+class="mark-read-btn"
+>
+Mark All Read
+</a>
+
+</div>
+
+
+{% if notifications %}
+
+<div class="notifications-list">
+
+{% for note in notifications %}
+
+<a
+href="/read-notification/{{ note.id }}/"
+class="notification-card
+{% if not note.is_read %}
+unread
+{% endif %}"
+>
+
+<div class="notification-top">
+
+<h3>
+{{ note.title }}
+</h3>
+
+<span>
+{{ note.created_at|timesince }} ago
+</span>
+
+</div>
+
+<p>
+{{ note.message }}
+</p>
+
+</a>
+
+{% endfor %}
+
+</div>
+
+{% else %}
+
+<div class="empty-notifications">
+
+<h2>
+No Notifications Yet
+</h2>
+
+<p>
+Your alerts and updates will appear here.
+</p>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

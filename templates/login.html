@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | OneMarketX</title>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<section class="page-hero">
+
+<div class="contact-form-wrap">
+
+<div class="section-title">
+<h2>Welcome Back</h2>
+<p>Login to access your OneMarketX dashboard.</p>
+</div>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="form-errors">
+            <p>{{ message }}</p>
+        </div>
+    {% endfor %}
+{% endif %}
+
+<form method="POST" class="contact-form">
+{% csrf_token %}
+
+<div class="input-box">
+<label>Username or Email</label>
+<input type="text" name="username" required>
+</div>
+
+<div class="input-box">
+<label>Password</label>
+<input type="password" name="password" required>
+</div>
+
+<button type="submit" class="btn-main submit-btn">
+Login
+</button>
+
+</form>
+
+<div style="margin-top:18px; text-align:center;">
+<a href="/register/">Create account</a>
+</div>
+
+</div>
+<a href="/forgot-password/">
+Forgot Password?
+</a>
+</section>
+
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

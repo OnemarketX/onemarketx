@@ -1,0 +1,125 @@
+{% extends 'owner/base.html' %}
+
+{% block title %}
+Owner Dashboard
+{% endblock %}
+
+{% block content %}
+
+<h1 class="page-title">
+Owner Dashboard
+</h1>
+
+
+<div class="kpi-grid">
+
+<div class="kpi-card">
+<h3>Total Users</h3>
+<p>{{ total_users }}</p>
+</div>
+
+<div class="kpi-card">
+<h3>Verified Users</h3>
+<p>{{ verified_users }}</p>
+</div>
+
+<div class="kpi-card">
+<h3>New Today</h3>
+<p>{{ new_users_today }}</p>
+</div>
+
+<div class="kpi-card">
+<h3>Active Investments</h3>
+<p>{{ active_investments }}</p>
+</div>
+
+<div class="stat-card">
+    <h3>{{ pending_kyc }}</h3>
+    <p>Pending KYC</p>
+</div>
+
+<div class="stat-card">
+    <h3>{{ approved_kyc }}</h3>
+    <p>Approved KYC</p>
+</div>
+
+<div class="stat-card">
+    <h3>{{ rejected_kyc }}</h3>
+    <p>Rejected KYC</p>
+</div>
+
+<div class="kpi-card">
+<h3>Total Deposits</h3>
+<p>${{ total_deposits }}</p>
+</div>
+
+<div class="kpi-card">
+<h3>Deposits Today</h3>
+<p>${{ deposits_today }}</p>
+</div>
+
+<div class="kpi-card warning">
+<h3>Pending Deposits</h3>
+<p>{{ pending_deposits }}</p>
+</div>
+
+<div class="kpi-card">
+<h3>Total Withdrawals</h3>
+<p>${{ total_withdrawals }}</p>
+</div>
+
+<div class="kpi-card">
+<h3>Withdrawals Today</h3>
+<p>${{ withdrawals_today }}</p>
+</div>
+
+<div class="kpi-card danger">
+<h3>Pending Withdrawals</h3>
+<p>{{ pending_withdrawals }}</p>
+</div>
+
+<div class="kpi-card">
+<h3>Wallet Liability</h3>
+<p>${{ total_wallet_balance }}</p>
+</div>
+
+<div class="kpi-card">
+<h3>Total Invested</h3>
+<p>${{ total_invested }}</p>
+</div>
+
+</div>
+
+
+
+<div class="owner-section">
+
+<div class="table-wrap">
+
+<h2>Recent Deposits</h2>
+
+<table class="owner-table">
+
+<tr>
+<th>User</th>
+<th>Amount</th>
+<th>Status</th>
+</tr>
+
+{% for d in recent_deposits %}
+
+<tr>
+<td>{{ d.user }}</td>
+<td>${{ d.amount }}</td>
+<td>{{ d.status }}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+{% endblock %}

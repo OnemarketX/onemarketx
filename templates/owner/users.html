@@ -1,0 +1,77 @@
+{% extends 'owner/base.html' %}
+
+{% block title %}
+Users Management
+{% endblock %}
+
+{% block content %}
+
+<h1 class="page-title">
+Users Management
+</h1>
+
+
+<div class="owner-section">
+
+<div class="table-wrap">
+
+<table class="owner-table">
+
+<tr>
+<th>Username</th>
+<th>Email</th>
+<th>Balance</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+
+{% for user in users %}
+
+<tr>
+
+<td>{{ user.username }}</td>
+
+<td>{{ user.email }}</td>
+
+<td>${{ user.wallet_balance }}</td>
+
+<td>
+
+{% if user.is_suspended %}
+
+<span class="status-badge suspended">
+Suspended
+</span>
+
+{% else %}
+
+<span class="status-badge active">
+Active
+</span>
+
+{% endif %}
+
+</td>
+
+<td>
+
+<a href="/owner-user/{{ user.id }}/"
+class="view-btn">
+
+View
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+{% endblock %}

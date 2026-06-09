@@ -1,0 +1,47 @@
+{% extends 'owner/base.html' %}
+
+{% block content %}
+
+<div class="owner-card">
+
+    <h2>
+        KYC Review
+    </h2>
+
+    <p>
+        {{ kyc.user.username }}
+    </p>
+
+    <img src="{{ kyc.id_document.url }}" width="300">
+
+    <img src="{{ kyc.selfie.url }}" width="300">
+
+    <img src="{{ kyc.address_proof.url }}" width="300">
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <textarea
+            name="note"
+        >{{ kyc.admin_note }}</textarea>
+
+        <button
+            name="action"
+            value="approve"
+        >
+            Approve
+        </button>
+
+        <button
+            name="action"
+            value="reject"
+        >
+            Reject
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

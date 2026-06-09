@@ -1,0 +1,96 @@
+{% extends 'dashboard/base.html' %}
+
+{% block content %}
+
+<div class="dash-top">
+<h1>Deposit Funds</h1>
+<p>Submit your deposit request.</p>
+</div>
+
+<div class="deposit-grid">
+
+<div class="dash-card">
+
+<form method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+
+<div class="input-box">
+<label>Amount</label>
+<input type="number" name="amount" min="200" required>
+<small class="mini-text">
+Minimum deposit: $200
+</small>
+</div>
+
+<div class="input-box">
+<label>Payment Method</label>
+<select name="method" required>
+<option value="">Choose Method</option>
+
+{% for method in methods %}
+<option value="{{ method.id }}">
+{{ method.name }}
+</option>
+{% endfor %}
+
+</select>
+</div>
+
+<div class="input-box">
+<label>Upload Proof</label>
+<input type="file" name="proof">
+</div>
+
+<button type="submit" class="btn-main submit-btn">
+Submit Deposit
+</button>
+
+</form>
+
+</div>
+
+<div class="dash-card">
+
+<h3>Wallet Details</h3>
+
+{% for method in methods %}
+<p><strong>{{ method.name }}</strong></p>
+<p class="mini-text">{{ method.wallet_address }}</p>
+<hr>
+{% endfor %}
+
+</div>
+
+</div>
+
+<div class="dash-card history-card">
+
+<h3>My Deposits</h3>
+<div class="table-wrap">
+<table class="dash-table">
+
+<tr>
+<th>Date</th>
+<th>Amount</th>
+<th>Method</th>
+<th>Status</th>
+</tr>
+
+{% for item in deposits %}
+<tr>
+<td>{{ item.created_at|date:"M d, Y" }}</td>
+<td>${{ item.amount }}</td>
+<td>{{ item.method.name }}</td>
+<td>{{ item.status }}</td>
+</tr>
+{% empty %}
+<tr>
+<td colspan="4">No deposits yet.</td>
+</tr>
+{% endfor %}
+
+</table>
+</div>
+</div>
+
+{% endblock %}

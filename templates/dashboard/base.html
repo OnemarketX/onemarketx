@@ -1,0 +1,193 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}Dashboard{% endblock %}</title>
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+<body>
+
+<!-- Mobile Topbar -->
+<header class="mobile-topbar">
+    <button id="openSidebar" class="menu-toggle">☰</button>
+    <h2>OneMarket<span>X</span></h2>
+</header>
+{% for broadcast in active_broadcasts %}
+
+<div class="broadcast-banner
+{{ broadcast.priority|lower }}
+">
+
+<div>
+
+<strong>
+{{ broadcast.title }}
+</strong>
+
+<p>
+{{ broadcast.message }}
+</p>
+
+</div>
+
+</div>
+
+{% endfor %}
+<!-- Overlay -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<div class="dashboard-wrap">
+
+<!-- Sidebar -->
+<aside class="sidebar" id="sidebar">
+
+<div class="side-header">
+<h2>OneMarket<span>X</span></h2>
+<button id="closeSidebar" class="close-side">✕</button>
+</div>
+
+<nav class="side-links">
+<div class="notification-wrapper">
+
+<button
+class="notification-bell"
+id="notificationToggle"
+>
+
+🔔
+
+{% if unread_notifications > 0 %}
+
+<span class="notification-count">
+{{ unread_notifications }}
+</span>
+
+{% endif %}
+
+</button>
+
+
+<div
+class="notification-dropdown"
+id="notificationDropdown"
+>
+
+<div class="dropdown-header">
+
+<h3>
+Notifications
+</h3>
+
+<a href="/notifications/">
+View All
+</a>
+
+</div>
+
+
+{% if latest_notifications %}
+
+{% for note in latest_notifications %}
+
+<a
+href="/read-notification/{{ note.id }}/"
+class="dropdown-note
+{% if not note.is_read %}
+unread
+{% endif %}"
+>
+
+<h4>
+{{ note.title }}
+</h4>
+
+<p>
+{{ note.message|truncatechars:60 }}
+</p>
+
+<span>
+{{ note.created_at|timesince }} ago
+</span>
+
+</a>
+
+{% endfor %}
+
+{% else %}
+
+<div class="empty-dropdown">
+
+No notifications yet.
+
+</div>
+
+{% endif %}
+
+</div>
+
+</div>
+<a href="/dashboard/">Dashboard</a>
+<a href="/deposit/">Deposit</a>
+<a href="/kyc/">
+    <i class="fas fa-id-card"></i>
+    KYC Verification
+</a>
+<a href="/withdraw/">Withdraw</a>
+<a href="/investments/">Investments</a>
+<a href="/referrals/">Referrals</a>
+<a href="/transactions/">Transactions</a>
+<a href="/settings/">
+    <i class="fas fa-cog"></i>
+    Settings
+</a>
+<a href="/logout/" class="logout-btn">Logout</a>
+{% if request.user.is_superuser %}
+<li>
+<a href="/owner-dashboard/">
+Owner Dashboard
+</a>
+</li>
+
+<li>
+<a href="/owner-analytics/">
+Analytics
+</a>
+</li>
+{% endif %}
+
+
+{% if request.user.is_staff %}
+<li>
+<a href="/finance-panel/">
+Finance Panel
+</a>
+</li>
+{% endif %}
+</nav>
+
+</aside>
+
+<!-- Main Content -->
+<main class="dash-main">
+
+{% if messages %}
+{% for message in messages %}
+<div class="dash-message">
+{{ message }}
+</div>
+{% endfor %}
+{% endif %}
+
+{% block content %}{% endblock %}
+
+</main>
+
+</div>
+
+<script src="{% static 'js/dashboard.js' %}"></script>
+</body>
+</html>

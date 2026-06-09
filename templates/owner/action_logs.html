@@ -1,0 +1,67 @@
+{% extends 'owner/base.html' %}
+
+{% block title %}
+Action Logs
+{% endblock %}
+
+{% block content %}
+
+<h1 class="page-title">
+Owner Action Logs
+</h1>
+
+
+<div class="owner-section">
+
+<div class="table-wrap">
+<div class="stats-grid">
+
+<div class="stat-card">
+<h3>Total Logs</h3>
+<p>{{ logs.count }}</p>
+</div>
+
+</div>
+<table class="owner-table">
+
+<tr>
+<th>Owner</th>
+<th>Action</th>
+<th>Target User</th>
+<th>Description</th>
+<th>Date</th>
+</tr>
+
+{% for log in logs %}
+
+<tr>
+
+<td>{{ log.owner.username }}</td>
+
+<td>{{ log.action }}</td>
+
+<td>
+
+{% if log.target_user %}
+{{ log.target_user.username }}
+{% else %}
+-
+{% endif %}
+
+</td>
+
+<td>{{ log.description }}</td>
+
+<td>{{ log.created_at }}</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+{% endblock %}

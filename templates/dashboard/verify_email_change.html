@@ -1,0 +1,60 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}
+Verify Email Change
+{% endblock %}
+
+{% block content %}
+
+<div class="settings-container">
+
+    <div class="settings-card">
+
+        <h2>
+            Verify Email Change
+        </h2>
+
+        <p>
+            Enter the verification code sent
+            to your new email address.
+        </p>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="form-group">
+
+                <label>
+                    Verification Code
+                </label>
+
+                <input
+                    type="text"
+                    name="code"
+                    maxlength="6"
+                    required
+                >
+
+            </div>
+
+            <button
+                type="submit"
+                class="save-btn"
+            >
+                Verify Email
+            </button>
+            <a
+                href="/resend-email-change-code/"
+                class="resend-link"
+                >
+                Resend Code
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

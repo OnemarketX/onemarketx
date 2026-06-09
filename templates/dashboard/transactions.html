@@ -1,0 +1,61 @@
+{% extends 'dashboard/base.html' %}
+{% block title %}Transactions{% endblock %}
+
+{% block content %}
+
+<div class="dash-top">
+<h1>Transaction Center</h1>
+<p>Track all your account activity.</p>
+</div>
+
+<div class="dash-card history-card">
+
+<div class="table-wrap">
+
+<table class="dash-table">
+
+<tr>
+<th>Date</th>
+<th>Type</th>
+<th>Amount</th>
+<th>Status</th>
+<th>Details</th>
+</tr>
+
+{% for item in logs %}
+<tr>
+
+<td>
+{{ item.created_at|date:"M d, Y" }}
+</td>
+
+<td>{{ item.tx_type }}</td>
+
+<td>${{ item.amount }}</td>
+
+<td>
+<span class="status-badge {{ item.status|lower }}">
+{{ item.status }}
+</span>
+</td>
+
+<td>{{ item.description }}</td>
+
+</tr>
+{% empty %}
+
+<tr>
+<td colspan="5">
+No transactions yet.
+</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+{% endblock %}

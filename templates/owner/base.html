@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>{% block title %}Owner Panel{% endblock %}</title>
+
+<link rel="stylesheet"
+href="{% static 'css/dashboard.css' %}">
+
+</head>
+
+<body class="owner-body">
+
+<!-- MOBILE TOPBAR -->
+<div class="mobile-topbar">
+
+<button id="menuBtn">
+☰
+</button>
+
+<h2>OneMarketX</h2>
+
+</div>
+
+
+<!-- OVERLAY -->
+<div class="sidebar-overlay"
+id="sidebarOverlay"></div>
+
+
+<!-- SIDEBAR -->
+<div class="owner-sidebar"
+id="ownerSidebar">
+
+<h2>OneMarketX</h2>
+
+<a href="/owner-dashboard/">
+Dashboard
+</a>
+
+<a href="/owner-users/">
+Users
+</a>
+
+<a href="/owner-analytics/">
+Analytics
+</a>
+
+<a href="/finance-panel/">
+Finance
+</a>
+
+<a href="/owner-broadcasts/">
+Broadcast Center
+</a>
+
+<a href="http://127.0.0.1:8000/secure-control-portal/">
+Admin
+</a>
+
+<a href="/future-admin-tools/">
+Admin Tools
+</a>
+
+<a href="/broadcast-message/">
+Broadcasts
+</a>
+<a href="/owner-kyc/">
+    KYC Reviews
+</a>
+
+<a href="/owner-action-logs/">
+Action Logs
+</a>
+
+<a href="/dashboard/">
+User View
+</a>
+
+
+</div>
+
+
+<!-- MAIN -->
+<div class="owner-main">
+
+{% block content %}
+{% endblock %}
+
+</div>
+
+
+<script>
+
+const menuBtn =
+document.getElementById("menuBtn");
+
+const sidebar =
+document.getElementById("ownerSidebar");
+
+const overlay =
+document.getElementById("sidebarOverlay");
+
+
+menuBtn.onclick = () => {
+
+    sidebar.classList.toggle("show");
+    overlay.classList.toggle("show");
+
+};
+
+
+overlay.onclick = () => {
+
+    sidebar.classList.remove("show");
+    overlay.classList.remove("show");
+
+};
+
+</script>
+
+</body>
+</html>

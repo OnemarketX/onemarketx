@@ -1,0 +1,103 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Withdraw | OneMarketX{% endblock %}
+
+{% block content %}
+
+<div class="dash-top">
+<h1>Withdraw Funds</h1>
+<p>Request a secure payout.</p>
+</div>
+
+<div class="deposit-grid">
+
+<div class="dash-card">
+
+<form method="POST">
+{% csrf_token %}
+
+<div class="input-box">
+<label>Amount</label>
+<input type="number" name="amount" min="100" required>
+<small class="mini-text">Minimum withdrawal: $100</small>
+</div>
+
+<div class="input-box">
+<label>Method</label>
+<select name="method" required>
+<option value="">Choose Method</option>
+<option>USDT (TRC20)</option>
+<option>Bitcoin</option>
+<option>Bank Transfer</option>
+</select>
+</div>
+
+<div class="input-box">
+<label>Wallet / Account Details</label>
+<textarea name="details" rows="4" required></textarea>
+</div>
+<div class="form-group">
+
+    <label>
+        Withdrawal PIN
+    </label>
+
+    <input
+        type="password"
+        name="pin"
+        maxlength="4"
+        required
+    >
+
+</div>
+<button type="submit" class="btn-main submit-btn">
+Request Withdrawal
+</button>
+
+</form>
+
+</div>
+
+<div class="dash-card">
+<h3>Wallet Balance</h3>
+<p style="font-size:30px;">
+$ {{ request.user.wallet_balance }}
+</p>
+</div>
+
+</div>
+
+<div class="dash-card history-card">
+
+<h3>My Withdrawals</h3>
+
+<div class="table-wrap">
+
+<table class="dash-table">
+<tr>
+<th>Date</th>
+<th>Amount</th>
+<th>Method</th>
+<th>Status</th>
+</tr>
+
+{% for item in withdrawals %}
+<tr>
+<td>{{ item.created_at|date:"M d, Y" }}</td>
+<td>${{ item.amount }}</td>
+<td>{{ item.method }}</td>
+<td>{{ item.status }}</td>
+</tr>
+{% empty %}
+<tr>
+<td colspan="4">No withdrawals yet.</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+{% endblock %}

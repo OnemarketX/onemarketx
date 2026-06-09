@@ -1,0 +1,345 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}
+Account Settings
+{% endblock %}
+
+{% block content %}
+
+<div class="settings-container">
+
+    <div class="page-header">
+
+        <h1>Account Settings</h1>
+
+        <p>
+            Manage your profile information,
+            account security and preferences.
+        </p>
+
+    </div>
+
+
+    <!-- PROFILE INFORMATION -->
+
+    <div class="settings-card">
+
+        <h2>Profile Information</h2>
+
+        <div class="profile-grid">
+
+            <div class="profile-item">
+                <span>Username</span>
+                <strong>{{ request.user.username }}</strong>
+            </div>
+
+            <div class="profile-item">
+                <span>Email</span>
+                <strong>{{ request.user.email }}</strong>
+            </div>
+
+            <div class="profile-item">
+                <span>Referral Code</span>
+                <strong>{{ request.user.referral_code }}</strong>
+            </div>
+
+            <div class="profile-item">
+                <span>Joined</span>
+                <strong>
+                    {{ request.user.date_joined|date:"M d, Y" }}
+                </strong>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- CHANGE EMAIL -->
+
+    <div class="settings-card">
+
+        <h2>Change Email</h2>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <input
+                type="hidden"
+                name="action"
+                value="change_email"
+            >
+
+            <div class="form-group">
+
+                <label>New Email</label>
+
+                <input
+                    type="email"
+                    name="new_email"
+                    required
+                >
+
+            </div>
+
+            <button
+                type="submit"
+                class="save-btn"
+            >
+                Update Email
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- CHANGE PASSWORD -->
+
+    <div class="settings-card">
+
+        <h2>Change Password</h2>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <input
+                type="hidden"
+                name="action"
+                value="change_password"
+            >
+
+            <div class="form-group">
+
+                <label>New Password</label>
+
+                <input
+                    type="password"
+                    name="password1"
+                    required
+                >
+
+            </div>
+
+            <div class="form-group">
+
+                <label>Confirm Password</label>
+
+                <input
+                    type="password"
+                    name="password2"
+                    required
+                >
+
+            </div>
+
+            <button
+                type="submit"
+                class="save-btn"
+            >
+                Update Password
+            </button>
+
+        </form>
+
+    </div>
+
+    {% if not request.user.withdrawal_pin %}
+
+<div class="settings-card">
+
+    <h2>
+        Withdrawal PIN
+    </h2>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <input
+            type="hidden"
+            name="action"
+            value="set_withdrawal_pin"
+        >
+
+        <div class="form-group">
+
+            <label>
+                4 Digit PIN
+            </label>
+
+            <input
+                type="password"
+                name="pin"
+                maxlength="4"
+                required
+            >
+
+        </div>
+
+        <div class="form-group">
+
+            <label>
+                Confirm PIN
+            </label>
+
+            <input
+                type="password"
+                name="confirm_pin"
+                maxlength="4"
+                required
+            >
+
+        </div>
+
+        <button
+            type="submit"
+            class="save-btn"
+        >
+            Save PIN
+        </button>
+
+    </form>
+
+</div>
+
+{% else %}
+
+<div class="settings-card">
+
+    <h2>
+        Withdrawal PIN
+    </h2>
+
+    <p>
+        Withdrawal PIN is already configured.
+    </p>
+
+    <div class="status-badge approved">
+        Active
+    </div>
+
+</div>
+
+{% endif %}
+
+
+    <!-- SECURITY -->
+
+    <div class="settings-card">
+
+        <h2>Security Settings</h2>
+
+        <div class="security-grid">
+
+            <div class="security-item">
+
+                <span>Email Verified</span>
+
+                {% if request.user.is_verified %}
+                    <strong class="verified">
+                        Verified
+                    </strong>
+                {% else %}
+                    <strong class="unverified">
+                        Not Verified
+                    </strong>
+                {% endif %}
+
+            </div>
+
+
+            <div class="security-item">
+
+                <span>Account Status</span>
+
+                {% if request.user.is_suspended %}
+                    <strong class="unverified">
+                        Suspended
+                    </strong>
+                {% else %}
+                    <strong class="verified">
+                        Active
+                    </strong>
+                {% endif %}
+
+            </div>
+
+
+            <div class="security-item">
+
+                <span>Last Login</span>
+
+                <strong>
+                    {{ request.user.last_login }}
+                </strong>
+
+            </div>
+
+
+            <div class="security-item">
+
+                <span>KYC Status</span>
+
+                <div class="kyc-badge">
+
+    {% if request.user.kyc_verified %}
+
+        <span class="kyc-approved">
+            ✔ Verified
+        </span>
+
+    {% else %}
+
+        <span class="kyc-pending">
+            Not Verified
+        </span>
+
+    {% endif %}
+
+</div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="settings-card">
+
+    <h2>
+        Security Activity
+    </h2>
+
+    {% for log in logs %}
+
+    <div class="log-item">
+
+        <strong>
+            {{ log.action }}
+        </strong>
+
+        <p>
+            {{ log.details }}
+        </p>
+
+        <small>
+            {{ log.created_at }}
+        </small>
+
+    </div>
+
+    {% empty %}
+
+    <p>
+        No security activity yet.
+    </p>
+
+    {% endfor %}
+
+</div>
+
+</div>
+
+{% endblock %}

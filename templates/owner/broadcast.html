@@ -1,0 +1,46 @@
+{% extends 'owner/base.html' %}
+
+{% block title %}
+Broadcast System
+{% endblock %}
+
+{% block content %}
+
+<h1 class="page-title">
+Broadcast Message
+</h1>
+
+
+<div class="owner-section">
+
+<div class="action-card">
+
+<form method="POST">
+
+{% csrf_token %}
+
+<input
+type="text"
+name="title"
+placeholder="Notification title"
+required
+>
+
+<textarea
+name="message"
+rows="8"
+placeholder="Write your broadcast message..."
+required
+></textarea>
+
+<button class="primary-btn">
+Send Broadcast
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+{% endblock %}
